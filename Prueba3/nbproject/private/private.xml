@@ -6,10 +6,15 @@
             <file>file:/C:/Users/jorge/Documents/NetBeansProjects/Prueba3/src/vista/AgregarDocumento.java</file>
             <file>file:/C:/Users/jorge/Documents/NetBeansProjects/Prueba3/src/vista/EliminarDocumento.java</file>
             <file>file:/C:/Users/jorge/Documents/NetBeansProjects/Prueba3/src/modelo/dao/LibroDAO.java</file>
+            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/Prueba3/src/modelo/clases/Revista.java</file>
+            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/Prueba3/src/modelo/clases/Libro.java</file>
             <file>file:/C:/Users/jorge/Documents/NetBeansProjects/Prueba3/src/modelo/dao/RevistaDAO.java</file>
             <file>file:/C:/Users/jorge/Documents/NetBeansProjects/Prueba3/src/test/TestLibroDAO.java</file>
             <file>file:/C:/Users/jorge/Documents/NetBeansProjects/Prueba3/src/modelo/dao/MesDAO.java</file>
+            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/Prueba3/src/vista/ListarDocumentos.java</file>
+            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/Prueba3/src/modelo/clases/Mes.java</file>
             <file>file:/C:/Users/jorge/Documents/NetBeansProjects/Prueba3/src/test/TestRevistaDAO.java</file>
+            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/Prueba3/src/modelo/interfaces/ICrud.java</file>
         </group>
     </open-files>
 </project-private>

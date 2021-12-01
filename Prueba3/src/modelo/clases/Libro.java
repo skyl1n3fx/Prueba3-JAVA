@@ -31,7 +31,7 @@ public class Libro extends Documento {
 
     @Override
     public String toString() {
-        return "Libro{" + "prestamo=" + prestamo + '}';
+        return "Libro{" + super.toString() +  " prestamo=" + prestamo + '}';
     }
 
     public String imprimir() {

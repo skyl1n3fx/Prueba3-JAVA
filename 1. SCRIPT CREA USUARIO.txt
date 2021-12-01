@@ -1,3 +1,8 @@
+*******************************
+-- BDD ORACLE 19c ORCL 
+*******************************
+
+-- Creamos el usuario para conectarnos a la bdd
 CREATE USER prueba3 IDENTIFIED BY prueba3
 DEFAULT TABLESPACE USERS
 TEMPORARY TABLESPACE temp;

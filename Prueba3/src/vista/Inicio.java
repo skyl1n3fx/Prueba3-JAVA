@@ -5,6 +5,8 @@
  */
 package vista;
 
+import static java.lang.System.exit;
+
 /**
  *
  * @author Giselle
@@ -98,7 +100,7 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ItemLMenuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemLMenuSalirActionPerformed
-        // TODO add your handling code here:
+        exit(0);
     }//GEN-LAST:event_ItemLMenuSalirActionPerformed
 
     private void ItemMenuAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemMenuAgregarActionPerformed

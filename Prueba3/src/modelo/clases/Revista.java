@@ -50,7 +50,7 @@ public class Revista extends Documento {
 
     @Override
     public String toString() {
-        return "Revista{" + "volumen=" + volumen + ", numero=" + numero + ", mes=" + mes + '}';
+        return "Revista{" + super.toString() +  " volumen=" + volumen + ", numero=" + numero + ", mes=" + mes + '}';
     }
 
     public String imprimir() {
