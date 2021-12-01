@@ -1,0 +1,165 @@
+-- Generado por Oracle SQL Developer Data Modeler 18.4.0.339.1532
+--   en:        2021-11-30 05:12:30 CLST
+--   sitio:      Oracle Database 11g
+--   tipo:      Oracle Database 11g
+
+
+
+CREATE TABLE documento (
+    codigo      NUMBER(9) NOT NULL,
+    titulo      VARCHAR2(60) NOT NULL,
+    autor       VARCHAR2(50) NOT NULL,
+    editorial   VARCHAR2(50) NOT NULL,
+    anio        VARCHAR2(4) NOT NULL
+);
+
+CREATE TABLE TIPO_DOCUMENTO ( 
+	id NUMBER(4) primary key, 
+	descripcion varchar2(100) not null);
+
+ALTER TABLE documento ADD CONSTRAINT documento_pk PRIMARY KEY ( codigo );
+
+CREATE TABLE libro (
+    codigo        NUMBER(9) NOT NULL,
+    prestamo_id   NUMBER(9) NOT NULL
+);
+
+ALTER TABLE libro ADD CONSTRAINT libro_pk PRIMARY KEY ( codigo );
+
+CREATE TABLE mes (
+    id            NUMBER(9) NOT NULL,
+    descripcion   VARCHAR2(80) NOT NULL
+);
+
+ALTER TABLE mes ADD CONSTRAINT mes_pk PRIMARY KEY ( id );
+
+CREATE TABLE prestamo (
+    id            NUMBER(9) NOT NULL,
+    descripcion   VARCHAR2(2) NOT NULL
+);
+
+ALTER TABLE prestamo ADD CONSTRAINT prestamo_pk PRIMARY KEY ( id );
+
+CREATE TABLE revista (
+    codigo    NUMBER(9) NOT NULL,
+    volumen   VARCHAR2(70) NOT NULL,
+    numero    VARCHAR2(10) NOT NULL,
+    mes_id    NUMBER(9) NOT NULL
+);
+
+ALTER TABLE revista ADD CONSTRAINT revista_pk PRIMARY KEY ( codigo );
+
+ALTER TABLE libro
+    ADD CONSTRAINT libro_documento_fk FOREIGN KEY ( codigo )
+        REFERENCES documento ( codigo );
+
+ALTER TABLE libro
+    ADD CONSTRAINT libro_prestamo_fk FOREIGN KEY ( prestamo_id )
+        REFERENCES prestamo ( id );
+
+ALTER TABLE revista
+    ADD CONSTRAINT revista_documento_fk FOREIGN KEY ( codigo )
+        REFERENCES documento ( codigo );
+
+ALTER TABLE revista
+    ADD CONSTRAINT revista_mes_fk FOREIGN KEY ( mes_id )
+        REFERENCES mes ( id );
+
+CREATE OR REPLACE TRIGGER arc_fkarc_1_revista BEFORE
+    INSERT OR UPDATE OF codigo ON revista
+    FOR EACH ROW
+DECLARE
+    d NUMBER(9);
+BEGIN
+    SELECT
+        a.codigo
+    INTO d
+    FROM
+        documento a
+    WHERE
+        a.codigo = :new.codigo;
+
+    IF ( d IS NULL OR d <> 2 ) THEN
+        raise_application_error(-20223, 'FK REVISTA_DOCUMENTO_FK in Table REVISTA violates Arc constraint on Table DOCUMENTO - discriminator column codigo doesn''t have value 2'
+        );
+    END IF;
+
+EXCEPTION
+    WHEN no_data_found THEN
+        NULL;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
+
+CREATE OR REPLACE TRIGGER arc_fkarc_1_libro BEFORE
+    INSERT OR UPDATE OF codigo ON libro
+    FOR EACH ROW
+DECLARE
+    d NUMBER(9);
+BEGIN
+    SELECT
+        a.codigo
+    INTO d
+    FROM
+        documento a
+    WHERE
+        a.codigo = :new.codigo;
+
+    IF ( d IS NULL OR d <> 1 ) THEN
+        raise_application_error(-20223, 'FK LIBRO_DOCUMENTO_FK in Table LIBRO violates Arc constraint on Table DOCUMENTO - discriminator column codigo doesn''t have value 1'
+        );
+    END IF;
+
+EXCEPTION
+    WHEN no_data_found THEN
+        NULL;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
+
+
+
+-- Informe de Resumen de Oracle SQL Developer Data Modeler: 
+-- 
+-- CREATE TABLE                             5
+-- CREATE INDEX                             0
+-- ALTER TABLE                              9
+-- CREATE VIEW                              0
+-- ALTER VIEW                               0
+-- CREATE PACKAGE                           0
+-- CREATE PACKAGE BODY                      0
+-- CREATE PROCEDURE                         0
+-- CREATE FUNCTION                          0
+-- CREATE TRIGGER                           2
+-- ALTER TRIGGER                            0
+-- CREATE COLLECTION TYPE                   0
+-- CREATE STRUCTURED TYPE                   0
+-- CREATE STRUCTURED TYPE BODY              0
+-- CREATE CLUSTER                           0
+-- CREATE CONTEXT                           0
+-- CREATE DATABASE                          0
+-- CREATE DIMENSION                         0
+-- CREATE DIRECTORY                         0
+-- CREATE DISK GROUP                        0
+-- CREATE ROLE                              0
+-- CREATE ROLLBACK SEGMENT                  0
+-- CREATE SEQUENCE                          0
+-- CREATE MATERIALIZED VIEW                 0
+-- CREATE MATERIALIZED VIEW LOG             0
+-- CREATE SYNONYM                           0
+-- CREATE TABLESPACE                        0
+-- CREATE USER                              0
+-- 
+-- DROP TABLESPACE                          0
+-- DROP DATABASE                            0
+-- 
+-- REDACTION POLICY                         0
+-- 
+-- ORDS DROP SCHEMA                         0
+-- ORDS ENABLE SCHEMA                       0
+-- ORDS ENABLE OBJECT                       0
+-- 
+-- ERRORS                                   0
+-- WARNINGS                                 0

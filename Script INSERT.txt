@@ -1,0 +1,35 @@
+----------------------------
+-- SECUENCIAS
+----------------------------
+CREATE SEQUENCE SEQ_MES;
+CREATE SEQUENCE SEQ_TIPO_DOCUMENTO;
+
+---------------------------------------------------------
+-- PRESTAMO
+---------------------------------------------------------
+INSERT INTO PRESTAMO VALUES (1, 'SI');
+INSERT INTO PRESTAMO VALUES (2, 'NO');
+
+---------------------------------------------------------
+-- MES
+---------------------------------------------------------
+INSERT INTO MES VALUES (SEQ_MES.nextval, 'Enero');
+INSERT INTO MES VALUES (SEQ_MES.nextval, 'Febrero');
+INSERT INTO MES VALUES (SEQ_MES.nextval, 'Marzo');
+INSERT INTO MES VALUES (SEQ_MES.nextval, 'Abril');
+INSERT INTO MES VALUES (SEQ_MES.nextval, 'Mayo');
+INSERT INTO MES VALUES (SEQ_MES.nextval, 'Junio');
+INSERT INTO MES VALUES (SEQ_MES.nextval, 'Julio');
+INSERT INTO MES VALUES (SEQ_MES.nextval, 'Agosto');
+INSERT INTO MES VALUES (SEQ_MES.nextval, 'Septiembre');
+INSERT INTO MES VALUES (SEQ_MES.nextval, 'Octubre');
+INSERT INTO MES VALUES (SEQ_MES.nextval, 'Noviembre');
+INSERT INTO MES VALUES (SEQ_MES.nextval, 'Diciembre');
+
+---------------------------------------------------------
+-- TIPO DOCUMENTO
+---------------------------------------------------------
+INSERT INTO TIPO_DOCUMENTO VALUES (SEQ_TIPO_DOCUMENTO.NEXTVAL,  'LIBRO');
+INSERT INTO TIPO_DOCUMENTO VALUES (SEQ_TIPO_DOCUMENTO.NEXTVAL,  'REVISTA');
+
+COMMIT;
